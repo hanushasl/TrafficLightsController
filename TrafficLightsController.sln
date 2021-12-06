@@ -12,6 +12,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Design", "Design", "{79E24F
 		Design\SimpleTrafficLightsSystemDiagrams.vsdx = Design\SimpleTrafficLightsSystemDiagrams.vsdx
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrafficLights.ConsoleClient", "TrafficLights.ConsoleClient\TrafficLights.ConsoleClient.csproj", "{189E70A4-568C-422E-B4E7-B2C1E541576F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,6 +28,10 @@ Global
 		{CA460344-EC50-4D4D-A495-C2AE56B29A37}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CA460344-EC50-4D4D-A495-C2AE56B29A37}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CA460344-EC50-4D4D-A495-C2AE56B29A37}.Release|Any CPU.Build.0 = Release|Any CPU
+		{189E70A4-568C-422E-B4E7-B2C1E541576F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{189E70A4-568C-422E-B4E7-B2C1E541576F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{189E70A4-568C-422E-B4E7-B2C1E541576F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{189E70A4-568C-422E-B4E7-B2C1E541576F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
