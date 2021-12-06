@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31911.196
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrafficLights.BL", "TrafficLights.BL\TrafficLights.BL.csproj", "{766C874E-2C41-4953-853D-CFFFB27CEB64}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrafficLights.BL.Tests", "TrafficLights.BL.Tests\TrafficLights.BL.Tests.csproj", "{CA460344-EC50-4D4D-A495-C2AE56B29A37}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Design", "Design", "{79E24F0B-848B-43CD-BB4F-FAEE65D5CDA2}"
+	ProjectSection(SolutionItems) = preProject
+		Design\SimpleTrafficLightsSystemDiagrams.vsdx = Design\SimpleTrafficLightsSystemDiagrams.vsdx
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{766C874E-2C41-4953-853D-CFFFB27CEB64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{766C874E-2C41-4953-853D-CFFFB27CEB64}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{766C874E-2C41-4953-853D-CFFFB27CEB64}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{766C874E-2C41-4953-853D-CFFFB27CEB64}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA460344-EC50-4D4D-A495-C2AE56B29A37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA460344-EC50-4D4D-A495-C2AE56B29A37}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA460344-EC50-4D4D-A495-C2AE56B29A37}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA460344-EC50-4D4D-A495-C2AE56B29A37}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CA3B7D85-5F2C-4445-9F7F-0A05F844568B}
+	EndGlobalSection
+EndGlobal
