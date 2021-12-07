@@ -1,4 +1,6 @@
-﻿namespace TrafficLights.BL
+﻿using System.Collections.Generic;
+
+namespace TrafficLights.BL
 {
   /// <summary>
   /// State machine interface.
@@ -9,6 +11,11 @@
     /// Current state.
     /// </summary>
     TrafficState CurrentState { get; }
+
+    /// <summary>
+    /// State transitions look-up table.
+    /// </summary>
+    IDictionary<StateTransition, TrafficState> StateTransitions { get; }
 
     /// <summary>
     /// Get next state based on current state and transition command.

@@ -8,8 +8,8 @@ namespace TrafficLights.BL
     /// <inheritdoc />
     public TrafficState CurrentState { get; private set; }
 
-    // state transitions
-    private readonly IDictionary<StateTransition, TrafficState> _transitions;
+    /// <inheritdoc />
+    public IDictionary<StateTransition, TrafficState> StateTransitions { get; }
 
     /// <summary>
     /// Constructor.
@@ -18,16 +18,15 @@ namespace TrafficLights.BL
     /// <param name="initialState">Initial state.</param>
     public StateMachine(IDictionary<StateTransition, TrafficState> transitions, TrafficState initialState)
     {
-      _transitions = transitions;
+      StateTransitions = transitions;
       CurrentState = initialState;
     }
-
 
     /// <inheritdoc />
     public TrafficState GetNextState(TransitionCommand command)
     {
-      StateTransition transition = new StateTransition(TrafficState.S0, TransitionCommand.T1);
-      if (!_transitions.TryGetValue(transition, out var nextState))
+      StateTransition transition = new StateTransition(CurrentState, command);
+      if (!StateTransitions.TryGetValue(transition, out var nextState))
       {
         throw new InvalidOperationException($"Invalid transition: {CurrentState} -> {command}.");
       }

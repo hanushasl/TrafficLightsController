@@ -25,8 +25,21 @@ namespace TrafficLights.ConsoleClient
       };
       IStateMachine sm = new StateMachine(transitions, TrafficState.S0);
 
+      // construct state durations look-up table
+      const int ResetDuration = 10_000;
+      const int TrafficRunning = 30_000;
+      const int TrafficStopping = 3_000;
+      Dictionary<TrafficState, int> sd = new Dictionary<TrafficState, int>
+      {
+        { TrafficState.Reset, ResetDuration },
+        { TrafficState.S0, TrafficRunning },
+        { TrafficState.S1, TrafficStopping },
+        { TrafficState.S2, TrafficRunning },
+        { TrafficState.S3, TrafficStopping },
+      };
+
       // construct system controller
-      ITrafficController controller = new TrafficController(tis, sm);
+      ITrafficController controller = new TrafficController(tis, sm, sd);
     }
   }
 }

@@ -23,9 +23,17 @@ namespace TrafficLights.BL.Tests
       TrafficState initialState = TrafficState.Reset;
       IStateMachine sm = new StateMachine(transitions.Object, initialState);
       ITrafficIntersectionSystem tis = new TrafficIntersectionSystem();
+      Dictionary<TrafficState, int> sd = new Dictionary<TrafficState, int>
+      {
+        { TrafficState.Reset, 10000 },
+        { TrafficState.S0, 30_000 },
+        { TrafficState.S1, 3_000 },
+        { TrafficState.S2, 30_000 },
+        { TrafficState.S3, 3_000 },
+      };
 
       // act
-      ITrafficController controller = new TrafficController(tis, sm);
+      ITrafficController controller = new TrafficController(tis, sm, sd);
 
       // assert
       Assert.Equal(tis, controller.TrafficIntersectionSystem);
