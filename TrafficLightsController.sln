@@ -3,16 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31911.196
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrafficLights.BL", "TrafficLights.BL\TrafficLights.BL.csproj", "{766C874E-2C41-4953-853D-CFFFB27CEB64}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrafficLights.BL", "TrafficLights.BL\TrafficLights.BL.csproj", "{766C874E-2C41-4953-853D-CFFFB27CEB64}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrafficLights.BL.Tests", "TrafficLights.BL.Tests\TrafficLights.BL.Tests.csproj", "{CA460344-EC50-4D4D-A495-C2AE56B29A37}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrafficLights.BL.Tests", "TrafficLights.BL.Tests\TrafficLights.BL.Tests.csproj", "{CA460344-EC50-4D4D-A495-C2AE56B29A37}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Design", "Design", "{79E24F0B-848B-43CD-BB4F-FAEE65D5CDA2}"
 	ProjectSection(SolutionItems) = preProject
 		Design\SimpleTrafficLightsSystemDiagrams.vsdx = Design\SimpleTrafficLightsSystemDiagrams.vsdx
+		Design\SimpleTrafficLightsSystemDiagrams_Sequence.png = Design\SimpleTrafficLightsSystemDiagrams_Sequence.png
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrafficLights.ConsoleClient", "TrafficLights.ConsoleClient\TrafficLights.ConsoleClient.csproj", "{189E70A4-568C-422E-B4E7-B2C1E541576F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrafficLights.ConsoleClient", "TrafficLights.ConsoleClient\TrafficLights.ConsoleClient.csproj", "{189E70A4-568C-422E-B4E7-B2C1E541576F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

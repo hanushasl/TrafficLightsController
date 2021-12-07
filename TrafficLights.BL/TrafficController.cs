@@ -20,11 +20,11 @@ namespace TrafficLights.BL
 
     // background worker running the control routine
     private BackgroundWorker _bw = new BackgroundWorker();
-    private AutoResetEvent _routineStartedEvent = new AutoResetEvent(false);
-    private AutoResetEvent _routineStoppedEvent = new AutoResetEvent(false);
+    private readonly AutoResetEvent _routineStartedEvent = new AutoResetEvent(false);
+    private readonly AutoResetEvent _routineStoppedEvent = new AutoResetEvent(false);
 
     // state durations
-    private Dictionary<TrafficState, int> _stateDurations;
+    private readonly Dictionary<TrafficState, int> _stateDurations;
 
     /// <summary>
     /// Constructor.
