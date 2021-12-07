@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using TrafficLights.BL;
 
 namespace TrafficLights.ConsoleClient
 {
   class Program
   {
-    static void Main(string[] args)
+    static async Task Main(string[] args)
     {
       Console.WriteLine("Welcome in traffic lights control system!!!");
       Console.WriteLine("===========================================");
@@ -23,12 +24,12 @@ namespace TrafficLights.ConsoleClient
         { new StateTransition(TrafficState.S2, TransitionCommand.T3), TrafficState.S3},
         { new StateTransition(TrafficState.S3, TransitionCommand.T0), TrafficState.S0}
       };
-      IStateMachine sm = new StateMachine(transitions, TrafficState.S0);
+      IStateMachine sm = new StateMachine(transitions, TrafficState.Reset);
 
       // construct state durations look-up table
-      const int ResetDuration = 10_000;
-      const int TrafficRunning = 30_000;
-      const int TrafficStopping = 3_000;
+      const int ResetDuration = 1_000;
+      const int TrafficRunning = 4_000;
+      const int TrafficStopping = 2_000;
       Dictionary<TrafficState, int> sd = new Dictionary<TrafficState, int>
       {
         { TrafficState.Reset, ResetDuration },
@@ -40,6 +41,15 @@ namespace TrafficLights.ConsoleClient
 
       // construct system controller
       ITrafficController controller = new TrafficController(tis, sm, sd);
+      Console.WriteLine("Starting system.");
+      controller.Start();
+      Console.WriteLine("System started (will run for 70 seconds.");
+      await Task.Delay(20000);
+      Console.WriteLine("Stopping system.");
+      controller.Stop();
+      Console.WriteLine("System stopped.");
+
+      Console.ReadKey();
     }
   }
 }
