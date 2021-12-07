@@ -5,6 +5,7 @@
   /// </summary>
   public enum TrafficState
   {
+    Reset,
     S0,
     S1,
     S2,
