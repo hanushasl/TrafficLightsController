@@ -2,6 +2,7 @@
 using Moq;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Xunit;
 
 namespace TrafficLights.BL.Tests
@@ -44,9 +45,45 @@ namespace TrafficLights.BL.Tests
     /// Test that Start method starts the system properly.
     /// </summary>
     [Fact]
-    public void StartTest()
+    public async void StartTest()
     {
-      throw new NotImplementedException();
+      // arrange
+      Mock<ITrafficIntersectionSystem> tis = new Mock<ITrafficIntersectionSystem>();
+      tis.Setup(x => x.SetState(It.IsAny<TrafficState>())).Returns(true);
+
+      TrafficState initialState = TrafficState.Reset;
+      IDictionary<StateTransition, TrafficState> transitions = new Dictionary<StateTransition, TrafficState>
+      {
+        { new StateTransition(TrafficState.Reset, TransitionCommand.T0), TrafficState.S0 },
+        { new StateTransition(TrafficState.S0, TransitionCommand.T1), TrafficState.S1 },
+        { new StateTransition(TrafficState.S1, TransitionCommand.T2), TrafficState.S2 },
+        { new StateTransition(TrafficState.S2, TransitionCommand.T3), TrafficState.S3 },
+        { new StateTransition(TrafficState.S3, TransitionCommand.T0), TrafficState.S0 }
+      };
+      IStateMachine sm = new StateMachine(transitions, initialState);
+
+      const int ResetDuration = 10;
+      const int TrafficRunning = 30;
+      const int TrafficStopping = 3;
+      Dictionary<TrafficState, int> sd = new Dictionary<TrafficState, int>
+      {
+        { TrafficState.Reset, ResetDuration },
+        { TrafficState.S0, TrafficRunning },
+        { TrafficState.S1, TrafficStopping },
+        { TrafficState.S2, TrafficRunning },
+        { TrafficState.S3, TrafficStopping },
+      };
+
+      ITrafficController controller = new TrafficController(tis.Object, sm, sd);
+
+      // act
+      controller.Start();
+      RunningState actualState = controller.State;
+      await Task.Delay(1000);
+      controller.Stop();
+
+      // assert
+      Assert.Equal(RunningState.Running, actualState);
     }
 
     /// <summary>
@@ -55,7 +92,43 @@ namespace TrafficLights.BL.Tests
     [Fact]
     public void StopTest()
     {
-      throw new NotImplementedException();
+      // arrange
+      Mock<ITrafficIntersectionSystem> tis = new Mock<ITrafficIntersectionSystem>();
+      tis.Setup(x => x.SetState(It.IsAny<TrafficState>())).Returns(true);
+
+      TrafficState initialState = TrafficState.Reset;
+      IDictionary<StateTransition, TrafficState> transitions = new Dictionary<StateTransition, TrafficState>
+      {
+        { new StateTransition(TrafficState.Reset, TransitionCommand.T0), TrafficState.S0 },
+        { new StateTransition(TrafficState.S0, TransitionCommand.T1), TrafficState.S1 },
+        { new StateTransition(TrafficState.S1, TransitionCommand.T2), TrafficState.S2 },
+        { new StateTransition(TrafficState.S2, TransitionCommand.T3), TrafficState.S3 },
+        { new StateTransition(TrafficState.S3, TransitionCommand.T0), TrafficState.S0 }
+      };
+      IStateMachine sm = new StateMachine(transitions, initialState);
+
+      const int ResetDuration = 10;
+      const int TrafficRunning = 30;
+      const int TrafficStopping = 3;
+      Dictionary<TrafficState, int> sd = new Dictionary<TrafficState, int>
+      {
+        { TrafficState.Reset, ResetDuration },
+        { TrafficState.S0, TrafficRunning },
+        { TrafficState.S1, TrafficStopping },
+        { TrafficState.S2, TrafficRunning },
+        { TrafficState.S3, TrafficStopping },
+      };
+
+      ITrafficController controller = new TrafficController(tis.Object, sm, sd);
+
+      // act
+      controller.Start();
+      Assert.Equal(RunningState.Running, controller.State);
+      controller.Stop();
+      RunningState actualState = controller.State;
+
+      // assert
+      Assert.Equal(RunningState.Stopped, actualState);
     }
   }
 }

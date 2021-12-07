@@ -1,6 +1,15 @@
 ﻿namespace TrafficLights.BL
 {
   /// <summary>
+  /// Running state enum.
+  /// </summary>
+  public enum RunningState
+  {
+    Running,
+    Stopped
+  }
+
+  /// <summary>
   /// Traffic controller interface.
   ///
   /// Traffic controller controls the traffic intersection system.
@@ -18,6 +27,11 @@
     /// Traffic intersection system state machine.
     /// </summary>
     IStateMachine StateMachine { get; }
+
+    /// <summary>
+    /// Running state of the controller.
+    /// </summary>
+    RunningState State { get; }
 
     /// <summary>
     /// Start traffic intersection system.
